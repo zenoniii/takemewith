@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Takemewith</title>
+
+</head>
+<script type="text/javascript" charset="utf-8" src="lib/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="lib/jquery.getUrlParam.js"></script>
+<script type="text/javascript" charset="utf-8" src="lib/node-qrcode/qrcode.js"></script>
+<script type="text/javascript" charset="utf-8" src="lib/node-qrcode/qrcapacitytable.js"></script>
+<script type="text/javascript" charset="utf-8" src="lib/node-qrcode/qrcode-draw.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+function bookmarklet() {
+    f='http://buzzbong.com/~zenon3/takemewith/index.html?url='+encodeURIComponent(window.location.href);
+    a=function(){
+        if(!window.open(f,'passwordmaker','location=yes,links=no,scrollbars=yes,toolbar=no,width=750,height=435')) {
+            location.href=f;
+        }
+    };
+    if(/Firefox/.test(navigator.userAgent)) {
+        setTimeout(a,0);
+    }
+    else {
+        a();
+    }
+}
+$(document).ready( function() {
+
+    if(!window.console) window.console = {log:function(){},warn:function(){}};
+    //get url from parameter
+    var url = $(document).getUrlParam( "url" );
+    url = decodeURIComponent( url );
+
+    //triggered errors will throw
+    QRCodeDraw.errorBehavior.length = false;
+    var errorOut = function(error,canvas){
+            if(error) {
+                if(window.console && window.console.warn) {
+                    console.warn(error);
+                } else {
+                    alert(error);
+                }
+            }
+        }
+
+    var qrcode = document.createElement('canvas');
+    $("body").prepend(qrcode);
+
+    QRCodeDraw.draw(qrcode, url, errorOut );
+});
+
+</script>
+<body>
+    <div>
+        <a href="javascript:(function() { f='http://buzzbong.com/~zenon3/takemewith/index.html?url='+encodeURIComponent(window.location.href); a=function(){ if(!window.open(f,'passwordmaker','location=yes,links=no,scrollbars=yes,toolbar=no,width=350,height=350')) { location.href=f; } }; if(/Firefox/.test(navigator.userAgent)) { setTimeout(a,0); } else { a(); } })()">TakeMeWith</a>(bookmarklet)
+    </div>
+</body>
+</html>
