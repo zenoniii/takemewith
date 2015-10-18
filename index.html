@@ -13,7 +13,7 @@
 <script type="text/javascript" charset="utf-8">
 
 function bookmarklet() {
-    f='http://buzzbong.com/~zenon3/takemewith/index.html?url='+encodeURIComponent(window.location.href);
+    f='http://zenoniii.github.io/takemewith/index.html?url='+encodeURIComponent(window.location.href);
     a=function(){
         if(!window.open(f,'passwordmaker','location=yes,links=no,scrollbars=yes,toolbar=no,width=750,height=435')) {
             location.href=f;
@@ -54,7 +54,7 @@ $(document).ready( function() {
 </script>
 <body>
     <div>
-        <a href="javascript:(function() { f='http://buzzbong.com/~zenon3/takemewith/index.html?url='+encodeURIComponent(window.location.href); a=function(){ if(!window.open(f,'passwordmaker','location=yes,links=no,scrollbars=yes,toolbar=no,width=350,height=350')) { location.href=f; } }; if(/Firefox/.test(navigator.userAgent)) { setTimeout(a,0); } else { a(); } })()">TakeMeWith</a>(bookmarklet)
+        <a href="javascript:(function() { f='http://zenoniii.github.io/takemewith/index.html?url='+encodeURIComponent(window.location.href); a=function(){ if(!window.open(f,'passwordmaker','location=yes,links=no,scrollbars=yes,toolbar=no,width=350,height=350')) { location.href=f; } }; if(/Firefox/.test(navigator.userAgent)) { setTimeout(a,0); } else { a(); } })()">TakeMeWith</a>(bookmarklet)
     </div>
 </body>
 </html>
